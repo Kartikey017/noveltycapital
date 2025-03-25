@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Diamond } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,18 +42,19 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <Link to="/" className="text-2xl font-semibold tracking-tight inline-block mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">BrokerHaven</span>
+            <Link to="/" className="text-2xl font-semibold tracking-tight inline-flex items-center mb-6">
+              <Diamond className="w-5 h-5 mr-2 text-primary" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Novelty Capital</span>
             </Link>
             
             <p className="text-foreground/70 mb-6 max-w-md">
-              Empowering investors with premium financial solutions and expert guidance to navigate the complexities of global markets.
+              Empowering discerning investors with exclusive financial solutions and personalized guidance to excel in complex global markets.
             </p>
             
             <div className="flex items-center gap-4">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle border border-primary/10"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,7 +64,7 @@ const Footer = () => {
               
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle border border-primary/10"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -72,7 +74,7 @@ const Footer = () => {
               
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-foreground/80 transition-all hover:bg-primary hover:text-white shadow-subtle border border-primary/10"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -102,7 +104,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-border text-sm text-foreground/60 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© {currentYear} BrokerHaven. All rights reserved.</p>
+          <p>© {currentYear} Novelty Capital. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <span className="text-foreground/40">•</span>

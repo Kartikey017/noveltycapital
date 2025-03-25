@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-2xl shadow-subtle transition-all duration-300 bg-white hover:shadow-elevated animate-fade-in ${delayClass}`}
+      className={`group relative overflow-hidden rounded-2xl shadow-subtle transition-all duration-300 bg-white hover:shadow-elevated animate-fade-in ${delayClass} border border-primary/5`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       
       <div className="relative p-8 md:p-10">
         <div className="flex flex-col h-full">
-          <div className="mb-6 rounded-full bg-primary/10 w-14 h-14 flex items-center justify-center text-primary">
+          <div className="mb-6 rounded-full bg-primary/10 w-14 h-14 flex items-center justify-center text-primary shadow-subtle">
             {icon}
           </div>
           
@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   isHovered ? 'transform translate-y-0' : 'transform translate-y-full'
                 }`}
               >
-                Explore Now
+                Discover Now
               </span>
             </span>
             <ArrowRight className={`ml-2 w-4 h-4 transition-transform duration-300 ${

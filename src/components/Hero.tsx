@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Diamond } from "lucide-react";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,16 +39,20 @@ const Hero = () => {
           transform: 'perspective(1000px) rotateX(calc(var(--move-y, 0) * -0.05deg)) rotateY(calc(var(--move-x, 0) * 0.05deg))',
           transition: 'transform 0.1s ease-out'
         }}>
-          <span className="inline-block px-3 py-1 mb-6 text-xs font-medium uppercase tracking-wider rounded-full bg-secondary text-foreground/70 animate-fade-in">
-            Investment Solutions for Every Goal
-          </span>
+          <div className="flex items-center justify-center mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium uppercase tracking-wider rounded-full bg-secondary text-foreground/70 animate-fade-in border border-primary/10 shadow-subtle">
+              <Diamond className="w-3 h-3 text-primary" />
+              Exclusive Investment Solutions
+              <Diamond className="w-3 h-3 text-primary" />
+            </span>
+          </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 animate-fade-in delay-1">
-            Simplify Your <br className="hidden sm:block" /> Financial Journey
+            Elevate Your <br className="hidden sm:block" /> Financial Aspirations
           </h1>
           
           <p className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto mb-10 animate-fade-in delay-2">
-            Discover premium investment opportunities across multiple asset classes with our expert guidance and cutting-edge platform.
+            Experience elite investment opportunities with Novelty Capital's sophisticated platform and expert guidance.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-3">
@@ -56,13 +60,13 @@ const Hero = () => {
               to="/product/stocks"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-white shadow-subtle transition-all duration-300 hover:shadow-elevated hover:translate-y-[-2px]"
             >
-              Explore Products
+              Explore Premium Products
             </Link>
             <Link
               to="/contact"
-              className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-secondary text-foreground/80 transition-all duration-300 hover:bg-secondary/70"
+              className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-secondary text-foreground/80 transition-all duration-300 hover:bg-secondary/70 border border-primary/10"
             >
-              <span>Speak to an Advisor</span>
+              <span>Consult with an Advisor</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
@@ -71,7 +75,7 @@ const Hero = () => {
       
       {/* Scroll indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-5">
-        <span className="text-xs font-medium text-foreground/50">Scroll to explore</span>
+        <span className="text-xs font-medium text-foreground/50">Scroll to discover</span>
         <div className="h-12 w-[1px] bg-gradient-to-b from-foreground/50 to-transparent"></div>
       </div>
     </div>

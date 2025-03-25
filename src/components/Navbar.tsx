@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Diamond } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,9 +46,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-2xl font-semibold tracking-tight relative"
+            className="text-2xl font-semibold tracking-tight relative flex items-center"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">BrokerHaven</span>
+            <Diamond className="w-6 h-6 mr-2 text-primary" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Novelty Capital</span>
             <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-primary to-primary/0"></span>
           </Link>
 
