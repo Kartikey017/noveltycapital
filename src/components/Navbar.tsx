@@ -15,6 +15,7 @@ const Navbar = () => {
     { name: "Mutual Funds", path: "/product/mutual-funds" },
     { name: "Insurance", path: "/product/insurance" },
     { name: "Unlisted Shares", path: "/product/unlisted-shares" },
+    { name: "Calculators", path: "/calculators" },
   ];
 
   useEffect(() => {
