@@ -1,9 +1,9 @@
-
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Check, BarChart3, Banknote, LineChart, ShieldCheck, Briefcase } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
 
 const productData = {
   "stocks": {
@@ -76,7 +76,105 @@ const productData = {
       "Systematic investing options",
       "Transparent fee structures"
     ],
-    marketInsight: "Our mutual fund selection process emphasizes consistent risk-adjusted returns, management stability, and reasonable expense ratios. We continually monitor fund performance against relevant benchmarks to ensure optimal portfolio construction."
+    marketInsight: "Our mutual fund selection process emphasizes consistent risk-adjusted returns, management stability, and reasonable expense ratios. We continually monitor fund performance against relevant benchmarks to ensure optimal portfolio construction.",
+    assetManagementCompanies: [
+      {
+        name: "Vanguard Investment Management",
+        description: "Known for low-cost index funds and ETFs with a focus on passive investment strategies.",
+        aum: "$8.1 trillion",
+        founded: "1975",
+        schemes: [
+          {
+            name: "Vanguard Total Stock Market Index Fund",
+            category: "Equity - Large Cap",
+            risk: "Moderate",
+            returns: {
+              oneYear: "18.2%",
+              threeYear: "12.7%",
+              fiveYear: "15.3%"
+            },
+            expense: "0.04%",
+            minInvestment: "$3,000"
+          },
+          {
+            name: "Vanguard Wellington Fund",
+            category: "Hybrid - Balanced",
+            risk: "Low to Moderate",
+            returns: {
+              oneYear: "12.5%",
+              threeYear: "9.8%",
+              fiveYear: "11.2%"
+            },
+            expense: "0.24%",
+            minInvestment: "$3,000"
+          }
+        ]
+      },
+      {
+        name: "Blackrock Asset Management",
+        description: "Global investment manager focusing on both active and passive strategies across all asset classes.",
+        aum: "$9.5 trillion",
+        founded: "1988",
+        schemes: [
+          {
+            name: "BlackRock Global Allocation Fund",
+            category: "Allocation - Global",
+            risk: "Moderate",
+            returns: {
+              oneYear: "15.7%",
+              threeYear: "10.6%",
+              fiveYear: "12.1%"
+            },
+            expense: "0.80%",
+            minInvestment: "$1,000"
+          },
+          {
+            name: "BlackRock Technology Opportunities Fund",
+            category: "Sector - Technology",
+            risk: "High",
+            returns: {
+              oneYear: "21.3%",
+              threeYear: "18.9%",
+              fiveYear: "22.5%"
+            },
+            expense: "1.18%",
+            minInvestment: "$1,000"
+          }
+        ]
+      },
+      {
+        name: "Fidelity Investments",
+        description: "Offers a wide range of actively managed funds with strong research capabilities.",
+        aum: "$4.2 trillion",
+        founded: "1946",
+        schemes: [
+          {
+            name: "Fidelity Contrafund",
+            category: "Equity - Growth",
+            risk: "Moderate to High",
+            returns: {
+              oneYear: "19.6%",
+              threeYear: "14.2%",
+              fiveYear: "16.8%"
+            },
+            expense: "0.86%",
+            minInvestment: "$2,500"
+          },
+          {
+            name: "Fidelity Strategic Income Fund",
+            category: "Fixed Income - Multisector",
+            risk: "Low to Moderate",
+            returns: {
+              oneYear: "8.3%",
+              threeYear: "6.1%",
+              fiveYear: "7.5%"
+            },
+            expense: "0.67%",
+            minInvestment: "$2,500"
+          }
+        ]
+      }
+    ]
   },
   "insurance": {
     title: "Insurance",
@@ -208,6 +306,93 @@ const ProductDetail = () => {
   
   const colorClasses = getColorClasses();
 
+  // Render mutual fund specific content
+  const renderMutualFundsContent = () => {
+    if (productId !== 'mutual-funds' || !('assetManagementCompanies' in product)) return null;
+    
+    return (
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-6 md:px-8">
+          <h2 className="text-3xl font-medium mb-12 text-center">Asset Management Companies</h2>
+          
+          {product.assetManagementCompanies.map((company, index) => (
+            <div key={index} className="mb-16 animate-fade-in">
+              <div className={`p-8 rounded-2xl shadow-subtle ${colorClasses.bgLight} mb-8`}>
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-medium">{company.name}</h3>
+                    <p className="text-foreground/70 mt-2">{company.description}</p>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-sm">
+                    <div>
+                      <p className="text-foreground/50">Assets Under Management</p>
+                      <p className="font-medium text-lg">{company.aum}</p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/50">Founded</p>
+                      <p className="font-medium text-lg">{company.founded}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <h4 className="text-xl font-medium mb-6 pl-4 border-l-4 border-primary">Available Fund Schemes</h4>
+              
+              <div className="overflow-x-auto">
+                <Table className="w-full">
+                  <TableHeader>
+                    <TableRow className="bg-secondary/70">
+                      <TableHead className="font-medium">Scheme Name</TableHead>
+                      <TableHead className="font-medium">Category</TableHead>
+                      <TableHead className="font-medium">Risk Level</TableHead>
+                      <TableHead className="font-medium">1 Year Return</TableHead>
+                      <TableHead className="font-medium">3 Year Return</TableHead>
+                      <TableHead className="font-medium">5 Year Return</TableHead>
+                      <TableHead className="font-medium">Expense Ratio</TableHead>
+                      <TableHead className="font-medium">Min Investment</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {company.schemes.map((scheme, schemeIndex) => (
+                      <TableRow key={schemeIndex} className="hover:bg-secondary/30 transition-colors">
+                        <TableCell className="font-medium">{scheme.name}</TableCell>
+                        <TableCell>{scheme.category}</TableCell>
+                        <TableCell>
+                          <span className={`px-2 py-1 rounded text-xs ${
+                            scheme.risk.includes('High') ? 'bg-red-100 text-red-700' : 
+                            scheme.risk.includes('Moderate') ? 'bg-amber-100 text-amber-700' : 
+                            'bg-green-100 text-green-700'
+                          }`}>
+                            {scheme.risk}
+                          </span>
+                        </TableCell>
+                        <TableCell>{scheme.returns.oneYear}</TableCell>
+                        <TableCell>{scheme.returns.threeYear}</TableCell>
+                        <TableCell>{scheme.returns.fiveYear}</TableCell>
+                        <TableCell>{scheme.expense}</TableCell>
+                        <TableCell>{scheme.minInvestment}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              
+              {index < product.assetManagementCompanies.length - 1 && (
+                <div className="my-12 border-b border-border"></div>
+              )}
+            </div>
+          ))}
+          
+          <div className="mt-12 text-center">
+            <Link to="/contact" className="inline-block px-8 py-4 rounded-full bg-primary text-white shadow-subtle transition-all duration-300 hover:shadow-elevated hover:translate-y-[-2px]">
+              Schedule a Fund Advisory Consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -307,6 +492,9 @@ const ProductDetail = () => {
             </div>
           </div>
         </section>
+        
+        {/* Mutual Funds specific content */}
+        {renderMutualFundsContent()}
         
         {/* CTA section */}
         <section className="py-16 md:py-24 bg-secondary/50">
