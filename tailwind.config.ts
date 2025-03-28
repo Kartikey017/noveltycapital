@@ -62,6 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				gold: {
+					light: '#f5e7c1',
+					DEFAULT: '#d4af37',
+					dark: '#aa8c2c'
+				},
+				silver: {
+					light: '#e6e8e6',
+					DEFAULT: '#c0c0c0',
+					dark: '#a8a9ad'
+				},
+				charcoal: {
+					light: '#3e4756',
+					DEFAULT: '#36404a',
+					dark: '#2d353e'
 				}
 			},
 			borderRadius: {
@@ -101,6 +116,10 @@ export default {
 				'pulse-subtle': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.8' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-1000px 0' },
+					'100%': { backgroundPosition: '1000px 0' }
 				}
 			},
 			animation: {
@@ -111,7 +130,8 @@ export default {
 				'fade-in-left': 'fade-in-left 0.7s ease-out forwards',
 				'scale-in': 'scale-in 0.7s ease-out forwards',
 				'float': 'float 5s ease-in-out infinite',
-				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite'
+				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+				'shimmer': 'shimmer 2s linear infinite'
 			},
 			transitionTimingFunction: {
 				'expo-out': 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -120,10 +140,31 @@ export default {
 			boxShadow: {
 				'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'elevated': '0 10px 30px rgba(0, 0, 0, 0.08)',
-				'glass': '0 8px 32px rgba(0, 0, 0, 0.07)'
+				'glass': '0 8px 32px rgba(0, 0, 0, 0.07)',
+				'premium': '0 20px 50px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.07)',
+				'card': '0 2px 15px rgba(0, 0, 0, 0.04), 0 0 2px rgba(0, 0, 0, 0.02)',
+				'card-hover': '0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.04)'
 			},
 			backdropBlur: {
 				'xs': '2px',
+			},
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				display: ['Playfair Display', 'serif']
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						maxWidth: '65ch',
+						color: 'var(--foreground)',
+						'p, li': {
+							color: 'var(--foreground-muted)'
+						},
+						'h1, h2, h3, h4': {
+							color: 'var(--foreground)',
+						},
+					},
+				},
 			},
 		}
 	},

@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-2xl shadow-subtle transition-all duration-500 bg-white hover:shadow-elevated animate-fade-in ${delayClass} border border-primary/5`}
+      className={`group relative overflow-hidden rounded-2xl transition-all duration-500 bg-white premium-shadow hover:premium-hover animate-fade-in ${delayClass} border border-primary/10`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
