@@ -9,6 +9,8 @@ import SipCalculator from "@/components/calculators/SipCalculator";
 import RetirementCalculator from "@/components/calculators/RetirementCalculator";
 import CompoundCalculator from "@/components/calculators/CompoundCalculator";
 import SimpleInterestCalculator from "@/components/calculators/SimpleInterestCalculator";
+import HomeLoanCalculator from "@/components/calculators/HomeLoanCalculator";
+import CarLoanCalculator from "@/components/calculators/CarLoanCalculator";
 
 const Calculators = () => {
   const [activeTab, setActiveTab] = useState("inflation");
@@ -32,12 +34,14 @@ const Calculators = () => {
                 onValueChange={setActiveTab}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 max-w-4xl">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-7 max-w-6xl">
                   <TabsTrigger value="inflation">Inflation</TabsTrigger>
                   <TabsTrigger value="sip">SIP</TabsTrigger>
                   <TabsTrigger value="retirement">Retirement</TabsTrigger>
                   <TabsTrigger value="compound">Compound Interest</TabsTrigger>
                   <TabsTrigger value="simple">Simple Interest</TabsTrigger>
+                  <TabsTrigger value="homeloan">Home Loan</TabsTrigger>
+                  <TabsTrigger value="carloan">Car Loan</TabsTrigger>
                 </TabsList>
                 <Card className="mt-6 border-none shadow-card">
                   <CardContent className="p-6">
@@ -55,6 +59,12 @@ const Calculators = () => {
                     </TabsContent>
                     <TabsContent value="simple" className="mt-0">
                       <SimpleInterestCalculator />
+                    </TabsContent>
+                    <TabsContent value="homeloan" className="mt-0">
+                      <HomeLoanCalculator />
+                    </TabsContent>
+                    <TabsContent value="carloan" className="mt-0">
+                      <CarLoanCalculator />
                     </TabsContent>
                   </CardContent>
                 </Card>
