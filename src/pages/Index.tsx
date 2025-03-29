@@ -1,9 +1,11 @@
 
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import ProductSection from "../components/ProductSection";
 import Footer from "../components/Footer";
+import { ArrowRight, TrendingUp, Clock, Shield, BarChart2 } from "lucide-react";
 
 const Index = () => {
   useEffect(() => {
@@ -16,6 +18,129 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <ProductSection />
+        
+        {/* Consistent Investing Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-6 md:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="inline-block px-3 py-1 mb-6 text-xs font-medium uppercase tracking-wider rounded-full bg-secondary text-foreground/70 animate-fade-in">
+                Financial Wisdom
+              </span>
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-6 animate-fade-in">
+                The Power of Consistent Investing
+              </h2>
+              <p className="text-lg text-foreground/70 animate-fade-in delay-1">
+                Building wealth isn't about timing the market perfectly—it's about time in the market and consistency in your investment approach.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <div className="space-y-8">
+                  <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <TrendingUp className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-3">Compound Growth</h3>
+                      <p className="text-foreground/70">
+                        The eighth wonder of the world, compound interest transforms modest regular investments into substantial wealth over time, working harder the earlier you begin.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-3">Disciplined Approach</h3>
+                      <p className="text-foreground/70">
+                        Systematic investing through market cycles eliminates emotional decision-making and leverages dollar-cost averaging to optimize long-term returns.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <Shield className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-3">Financial Security</h3>
+                      <p className="text-foreground/70">
+                        Consistent investing establishes a foundation for future financial independence, providing security through retirement, market volatility, and unexpected life events.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <BarChart2 className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-3">Goal Achievement</h3>
+                      <p className="text-foreground/70">
+                        Regular investments aligned with specific financial goals—whether education funding, homeownership, or retirement—create the momentum needed to transform aspirations into reality.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-10">
+                  <Link
+                    to="/calculators"
+                    className="inline-flex items-center text-primary font-medium transition-all group"
+                  >
+                    <span>Explore Our Financial Calculators</span>
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+              
+              <div className="order-1 md:order-2 relative">
+                <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+                <div className="relative bg-white p-8 md:p-10 rounded-2xl shadow-elevated border border-primary/10">
+                  <h3 className="text-2xl font-medium mb-6">The Consistent Investor Advantage</h3>
+                  
+                  <div className="space-y-6">
+                    <div className="bg-secondary/30 p-4 rounded-xl">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-medium">Consistent Investor</span>
+                        <span className="text-primary font-medium">$745,180</span>
+                      </div>
+                      <p className="text-sm text-foreground/70">$500 monthly for 30 years at 8% average return</p>
+                    </div>
+                    
+                    <div className="bg-secondary/30 p-4 rounded-xl">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-medium">Market Timer</span>
+                        <span className="text-foreground/90 font-medium">$573,320</span>
+                      </div>
+                      <p className="text-sm text-foreground/70">Irregular investments trying to time market moves</p>
+                    </div>
+                    
+                    <div className="bg-secondary/30 p-4 rounded-xl">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-medium">Late Starter</span>
+                        <span className="text-foreground/90 font-medium">$298,130</span>
+                      </div>
+                      <p className="text-sm text-foreground/70">$1,000 monthly for just 15 years at 8% average return</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 text-center">
+                    <Link
+                      to="/calculators"
+                      className="inline-block px-6 py-3 rounded-full bg-primary text-white shadow-subtle transition-all hover:shadow-elevated hover:bg-primary/90"
+                    >
+                      Calculate Your Growth
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         
         {/* Stats Section */}
         <section className="py-20 bg-secondary/70">

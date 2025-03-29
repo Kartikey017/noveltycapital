@@ -14,7 +14,8 @@ const Navbar = () => {
     { name: "Bonds", path: "/product/bonds" },
     { name: "Mutual Funds", path: "/product/mutual-funds" },
     { name: "Insurance", path: "/product/insurance" },
-    { name: "Unlisted Shares", path: "/product/unlisted-shares" },
+    { name: "IPO", path: "/product/ipo" },
+    { name: "Pre IPO", path: "/product/unlisted-shares" },
     { name: "Calculators", path: "/calculators" },
   ];
 

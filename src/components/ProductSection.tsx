@@ -1,7 +1,7 @@
 
 import React from "react";
 import ProductCard from "./ProductCard";
-import { BarChart3, Banknote, LineChart, ShieldCheck, Briefcase, Diamond } from "lucide-react";
+import { BarChart3, Banknote, LineChart, ShieldCheck, Briefcase, Diamond, Globe } from "lucide-react";
 
 const ProductSection = () => {
   const products = [
@@ -34,11 +34,18 @@ const ProductSection = () => {
       delay: 4
     },
     {
-      title: "Unlisted Shares",
+      title: "IPO",
+      description: "Access exclusive initial public offerings and participate in the earliest stages of public company growth.",
+      icon: <Globe className="w-6 h-6" />,
+      slug: "ipo",
+      delay: 5
+    },
+    {
+      title: "Pre IPO",
       description: "Gain privileged access to exceptional opportunities in high-potential private companies before public listing.",
       icon: <Briefcase className="w-6 h-6" />,
       slug: "unlisted-shares",
-      delay: 5
+      delay: 6
     }
   ];
 
