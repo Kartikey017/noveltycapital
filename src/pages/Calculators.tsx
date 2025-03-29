@@ -11,6 +11,7 @@ import CompoundCalculator from "@/components/calculators/CompoundCalculator";
 import SimpleInterestCalculator from "@/components/calculators/SimpleInterestCalculator";
 import HomeLoanCalculator from "@/components/calculators/HomeLoanCalculator";
 import CarLoanCalculator from "@/components/calculators/CarLoanCalculator";
+import SwpCalculator from "@/components/calculators/SwpCalculator";
 
 const Calculators = () => {
   const [activeTab, setActiveTab] = useState("inflation");
@@ -34,12 +35,13 @@ const Calculators = () => {
                 onValueChange={setActiveTab}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-7 max-w-6xl">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-8 max-w-6xl mb-2">
                   <TabsTrigger value="inflation">Inflation</TabsTrigger>
                   <TabsTrigger value="sip">SIP</TabsTrigger>
+                  <TabsTrigger value="swp">SWP</TabsTrigger>
                   <TabsTrigger value="retirement">Retirement</TabsTrigger>
-                  <TabsTrigger value="compound">Compound Interest</TabsTrigger>
-                  <TabsTrigger value="simple">Simple Interest</TabsTrigger>
+                  <TabsTrigger value="compound">Compound</TabsTrigger>
+                  <TabsTrigger value="simple">Simple</TabsTrigger>
                   <TabsTrigger value="homeloan">Home Loan</TabsTrigger>
                   <TabsTrigger value="carloan">Car Loan</TabsTrigger>
                 </TabsList>
@@ -50,6 +52,9 @@ const Calculators = () => {
                     </TabsContent>
                     <TabsContent value="sip" className="mt-0">
                       <SipCalculator />
+                    </TabsContent>
+                    <TabsContent value="swp" className="mt-0">
+                      <SwpCalculator />
                     </TabsContent>
                     <TabsContent value="retirement" className="mt-0">
                       <RetirementCalculator />
