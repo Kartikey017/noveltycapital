@@ -8,6 +8,7 @@ import InflationCalculator from "@/components/calculators/InflationCalculator";
 import SipCalculator from "@/components/calculators/SipCalculator";
 import RetirementCalculator from "@/components/calculators/RetirementCalculator";
 import CompoundCalculator from "@/components/calculators/CompoundCalculator";
+import SimpleInterestCalculator from "@/components/calculators/SimpleInterestCalculator";
 
 const Calculators = () => {
   const [activeTab, setActiveTab] = useState("inflation");
@@ -31,11 +32,12 @@ const Calculators = () => {
                 onValueChange={setActiveTab}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 max-w-3xl">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 max-w-4xl">
                   <TabsTrigger value="inflation">Inflation</TabsTrigger>
                   <TabsTrigger value="sip">SIP</TabsTrigger>
                   <TabsTrigger value="retirement">Retirement</TabsTrigger>
                   <TabsTrigger value="compound">Compound Interest</TabsTrigger>
+                  <TabsTrigger value="simple">Simple Interest</TabsTrigger>
                 </TabsList>
                 <Card className="mt-6 border-none shadow-card">
                   <CardContent className="p-6">
@@ -50,6 +52,9 @@ const Calculators = () => {
                     </TabsContent>
                     <TabsContent value="compound" className="mt-0">
                       <CompoundCalculator />
+                    </TabsContent>
+                    <TabsContent value="simple" className="mt-0">
+                      <SimpleInterestCalculator />
                     </TabsContent>
                   </CardContent>
                 </Card>
