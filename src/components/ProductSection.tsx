@@ -35,7 +35,7 @@ const ProductSection = () => {
     },
     {
       title: "IPO",
-      description: "Access exclusive initial public offerings and participate in the earliest stages of public company growth.",
+      description: "Participate in carefully selected initial public offerings with our expert guidance through the entire subscription process.",
       icon: <Globe className="w-6 h-6" />,
       slug: "ipo",
       delay: 5

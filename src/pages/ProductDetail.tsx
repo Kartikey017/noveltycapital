@@ -1,6 +1,7 @@
+
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Check, BarChart3, Banknote, LineChart, ShieldCheck, Briefcase } from "lucide-react";
+import { ArrowLeft, Check, BarChart3, Banknote, LineChart, ShieldCheck, Briefcase, Globe, ArrowRight, Calendar, ChevronRight, Info, ExternalLink } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
@@ -200,8 +201,134 @@ const productData = {
     ],
     marketInsight: "Modern insurance products offer sophisticated solutions that go beyond basic protection. Our insurance specialists identify optimal coverage options that integrate with your overall financial plan for comprehensive wealth management."
   },
+  "ipo": {
+    title: "IPO",
+    subtitle: "Initial Public Offerings",
+    description: "Gain access to carefully selected IPOs with our expert guidance through the entire subscription process.",
+    icon: <Globe className="w-8 h-8" />,
+    color: "teal",
+    features: [
+      "Early access to high-quality initial public offerings",
+      "Thorough company and sector analysis",
+      "Streamlined application process",
+      "Expert guidance on allocation strategies",
+      "Post-listing advisory services",
+      "Preferential allocation opportunities",
+      "Comprehensive IPO calendar and alerts"
+    ],
+    benefits: [
+      "Opportunity to invest at the ground floor of public companies",
+      "Potential for listing gains",
+      "Access to growth-phase companies",
+      "Portfolio diversification with new-to-market entities",
+      "Participation in key economic sectors and innovations"
+    ],
+    marketInsight: "The IPO market continues to offer attractive opportunities for investors seeking exposure to innovative companies across various sectors. Our rigorous selection process identifies promising offerings with strong fundamentals and growth prospects.",
+    ipoProcess: [
+      {
+        title: "Filing & Regulatory Review",
+        description: "The company files a registration statement (like an S-1 in the US) with securities regulators, which includes detailed financial information, business model, risk factors, and intended use of proceeds."
+      },
+      {
+        title: "Roadshow & Book Building",
+        description: "Company management presents to institutional investors to generate interest. Investment banks collect bids to determine optimal pricing and build the order book."
+      },
+      {
+        title: "Pricing & Allocation",
+        description: "The final offer price is set based on demand gathered during the book building process. Shares are allocated to investors, with potential oversubscription prioritization."
+      },
+      {
+        title: "Listing & Trading",
+        description: "Shares begin trading on the public exchange. The market determines the actual trading price based on supply and demand after listing."
+      }
+    ],
+    upcomingIPOs: [
+      {
+        name: "GreenTech Innovations Ltd.",
+        sector: "Renewable Energy",
+        expectedRaise: "$750 million",
+        priceRange: "$32-38 per share",
+        openDate: "August 15, 2023",
+        closeDate: "August 20, 2023",
+        leadManagers: ["Morgan Stanley", "Goldman Sachs", "JP Morgan"],
+        description: "Leading provider of advanced solar energy solutions with proprietary storage technology."
+      },
+      {
+        name: "NexusHealth Systems",
+        sector: "Healthcare Technology",
+        expectedRaise: "$425 million",
+        priceRange: "$18-22 per share",
+        openDate: "September 8, 2023",
+        closeDate: "September 12, 2023",
+        leadManagers: ["Bank of America", "Credit Suisse"],
+        description: "Integrated healthcare platform using AI to optimize patient care and reduce costs."
+      },
+      {
+        name: "Quantum Computing Inc.",
+        sector: "Technology",
+        expectedRaise: "$1.2 billion",
+        priceRange: "$45-52 per share",
+        openDate: "September 22, 2023",
+        closeDate: "September 27, 2023",
+        leadManagers: ["Goldman Sachs", "Morgan Stanley", "Deutsche Bank"],
+        description: "Pioneer in commercial quantum computing solutions for enterprise applications."
+      }
+    ],
+    recentIPOPerformance: [
+      {
+        name: "CloudSecure Technologies",
+        sector: "Cybersecurity",
+        issuePrice: "$28",
+        listingPrice: "$42",
+        currentPrice: "$56",
+        listingGain: "+50.0%",
+        overallReturn: "+100.0%",
+        listingDate: "February 15, 2023"
+      },
+      {
+        name: "MobiPay Solutions",
+        sector: "Fintech",
+        issuePrice: "$18",
+        listingPrice: "$22",
+        currentPrice: "$35",
+        listingGain: "+22.2%",
+        overallReturn: "+94.4%",
+        listingDate: "March 10, 2023"
+      },
+      {
+        name: "BioGenesis Therapeutics",
+        sector: "Biotechnology",
+        issuePrice: "$32",
+        listingPrice: "$38",
+        currentPrice: "$29",
+        listingGain: "+18.8%",
+        overallReturn: "-9.4%",
+        listingDate: "April 5, 2023"
+      },
+      {
+        name: "EcoPackaging Systems",
+        sector: "Sustainable Materials",
+        issuePrice: "$24",
+        listingPrice: "$26",
+        currentPrice: "$31",
+        listingGain: "+8.3%",
+        overallReturn: "+29.2%",
+        listingDate: "May 20, 2023"
+      },
+      {
+        name: "DataInsight Analytics",
+        sector: "Enterprise Software",
+        issuePrice: "$42",
+        listingPrice: "$68",
+        currentPrice: "$72",
+        listingGain: "+61.9%",
+        overallReturn: "+71.4%",
+        listingDate: "June 8, 2023"
+      }
+    ]
+  },
   "unlisted-shares": {
-    title: "Unlisted Shares",
+    title: "Pre IPO",
     subtitle: "Private Equity Opportunities",
     description: "Exclusive access to pre-IPO companies and private market opportunities with high growth potential.",
     icon: <Briefcase className="w-8 h-8" />,
@@ -292,6 +419,15 @@ const ProductDetail = () => {
           iconBg: "bg-amber-100",
           gradient: "from-amber-500/10 to-amber-500/5"
         };
+      case "teal":
+        return {
+          bgLight: "bg-teal-50",
+          bgMedium: "bg-teal-100",
+          text: "text-teal-600", 
+          border: "border-teal-200",
+          iconBg: "bg-teal-100",
+          gradient: "from-teal-500/10 to-teal-500/5"
+        };
       default: // blue
         return {
           bgLight: "bg-blue-50",
@@ -305,6 +441,201 @@ const ProductDetail = () => {
   };
   
   const colorClasses = getColorClasses();
+
+  // Render IPO specific content
+  const renderIPOContent = () => {
+    if (productId !== 'ipo' || !('ipoProcess' in product)) return null;
+    
+    return (
+      <>
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-6 md:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-medium mb-8">How the IPO Process Works</h2>
+              <p className="text-lg text-foreground/70">
+                Understanding the journey from private to public company is essential for investors looking to participate in initial public offerings.
+              </p>
+            </div>
+            
+            <div className="relative">
+              {/* Connecting line */}
+              <div className="absolute top-0 bottom-0 left-[24px] md:left-1/2 w-1 bg-gradient-to-b from-primary/70 to-primary/20 transform md:translate-x-[-0.5px]"></div>
+              
+              {product.ipoProcess.map((step, index) => (
+                <div key={index} className={`relative mb-12 md:mb-0 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} animate-fade-in`}>
+                  <div className={`flex md:block ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                    <div className={`absolute left-0 md:left-1/2 w-12 h-12 rounded-full ${colorClasses.bgMedium} border-4 border-white flex items-center justify-center ${colorClasses.text} z-10 transform md:translate-x-[-50%]`}>
+                      {index + 1}
+                    </div>
+                    
+                    <div className={`ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-16' : 'md:ml-16'} bg-white p-6 rounded-xl shadow-subtle border border-primary/10 max-w-lg`}>
+                      <h3 className="text-xl font-medium mb-3">{step.title}</h3>
+                      <p className="text-foreground/70">{step.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container mx-auto px-6 md:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-medium mb-8">Upcoming IPO Opportunities</h2>
+              <p className="text-lg text-foreground/70">
+                Stay informed about the latest companies preparing to go public and evaluate potential investment opportunities.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {product.upcomingIPOs.map((ipo, index) => (
+                <div key={index} className="bg-white rounded-2xl shadow-subtle overflow-hidden border border-primary/10 animate-fade-in hover:shadow-elevated transition-all duration-300">
+                  <div className={`p-4 ${colorClasses.bgLight} border-b ${colorClasses.border}`}>
+                    <span className="text-xs font-medium uppercase tracking-wider px-2 py-1 rounded-full bg-white">{ipo.sector}</span>
+                    <h3 className="text-xl font-medium mt-2">{ipo.name}</h3>
+                  </div>
+                  
+                  <div className="p-6">
+                    <p className="text-foreground/70 mb-6">{ipo.description}</p>
+                    
+                    <div className="space-y-4">
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Expected Raise:</span>
+                        <span className="font-medium">{ipo.expectedRaise}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Price Range:</span>
+                        <span className="font-medium">{ipo.priceRange}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Subscription Period:</span>
+                        <span className="font-medium">{ipo.openDate} - {ipo.closeDate}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 pt-6 border-t border-border">
+                      <h4 className="text-sm font-medium mb-2">Lead Managers:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {ipo.leadManagers.map((manager, i) => (
+                          <span key={i} className="text-xs px-2 py-1 bg-secondary/40 rounded-full">
+                            {manager}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="px-6 pb-6">
+                    <a href="#" className="block w-full py-3 text-center rounded-lg bg-primary text-white transition-all hover:bg-primary/90">
+                      Register Interest
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <Link to="/ipo-calendar" className="inline-flex items-center text-primary font-medium transition-all group">
+                <Calendar className="mr-2 w-4 h-4" />
+                <span>View Complete IPO Calendar</span>
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </section>
+        
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-6 md:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-medium mb-8">Recent IPO Performance</h2>
+              <p className="text-lg text-foreground/70">
+                Track the performance of recent listings to understand market trends and investor sentiment.
+              </p>
+            </div>
+            
+            <div className="overflow-x-auto">
+              <Table className="w-full">
+                <TableHeader>
+                  <TableRow className={`${colorClasses.bgLight}`}>
+                    <TableHead className="font-medium">Company</TableHead>
+                    <TableHead className="font-medium">Sector</TableHead>
+                    <TableHead className="font-medium text-right">Issue Price</TableHead>
+                    <TableHead className="font-medium text-right">Listing Price</TableHead>
+                    <TableHead className="font-medium text-right">Listing Gain</TableHead>
+                    <TableHead className="font-medium text-right">Current Price</TableHead>
+                    <TableHead className="font-medium text-right">Overall Return</TableHead>
+                    <TableHead className="font-medium">Listing Date</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {product.recentIPOPerformance.map((ipo, index) => (
+                    <TableRow key={index} className="hover:bg-secondary/20 transition-colors">
+                      <TableCell className="font-medium">{ipo.name}</TableCell>
+                      <TableCell>{ipo.sector}</TableCell>
+                      <TableCell className="text-right">{ipo.issuePrice}</TableCell>
+                      <TableCell className="text-right">{ipo.listingPrice}</TableCell>
+                      <TableCell className={`text-right ${ipo.listingGain.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                        {ipo.listingGain}
+                      </TableCell>
+                      <TableCell className="text-right">{ipo.currentPrice}</TableCell>
+                      <TableCell className={`text-right ${ipo.overallReturn.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                        {ipo.overallReturn}
+                      </TableCell>
+                      <TableCell>{ipo.listingDate}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            
+            <div className="mt-12 p-8 rounded-2xl bg-secondary/30 border border-primary/10 max-w-3xl mx-auto">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Info className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium mb-3">Important Considerations for IPO Investing</h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <ChevronRight className="mt-1 mr-2 w-4 h-4 text-primary flex-shrink-0" />
+                      <span>IPOs can be volatile in the short term, with significant price fluctuations post-listing.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <ChevronRight className="mt-1 mr-2 w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Conduct thorough research on company fundamentals, management team, and growth prospects.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <ChevronRight className="mt-1 mr-2 w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Consider lock-up periods and potential share dilution in the months following the IPO.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <ChevronRight className="mt-1 mr-2 w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Evaluate IPO pricing in relation to industry peers and comparable public companies.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <ChevronRight className="mt-1 mr-2 w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Decide on your investment horizon—short-term listing gains or long-term growth potential.</span>
+                    </li>
+                  </ul>
+                  
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <a 
+                      href="/resources/ipo-investor-guide.pdf" 
+                      className="inline-flex items-center text-primary font-medium transition-all group"
+                    >
+                      <span>Download Our Complete IPO Investor Guide</span>
+                      <ExternalLink className="ml-2 w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  };
 
   // Render mutual fund specific content
   const renderMutualFundsContent = () => {
@@ -493,8 +824,9 @@ const ProductDetail = () => {
           </div>
         </section>
         
-        {/* Mutual Funds specific content */}
-        {renderMutualFundsContent()}
+        {/* Product specific content */}
+        {productId === 'ipo' && renderIPOContent()}
+        {productId === 'mutual-funds' && renderMutualFundsContent()}
         
         {/* CTA section */}
         <section className="py-16 md:py-24 bg-secondary/50">
