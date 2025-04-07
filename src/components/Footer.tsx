@@ -14,7 +14,8 @@ const Footer = () => {
         { name: "Bonds", path: "/product/bonds" },
         { name: "Mutual Funds", path: "/product/mutual-funds" },
         { name: "Insurance", path: "/product/insurance" },
-        { name: "Unlisted Shares", path: "/product/unlisted-shares" }
+        { name: "IPO", path: "/product/ipo" },
+        { name: "Pre IPO", path: "/product/unlisted-shares" }
       ]
     },
     {
@@ -103,6 +104,18 @@ const Footer = () => {
           ))}
         </div>
         
+        {/* Disclaimer section */}
+        <div className="mb-8 p-4 bg-secondary/80 border border-primary/10 rounded-lg text-sm text-foreground/80">
+          <p className="font-medium mb-2">Disclaimer:</p>
+          <p className="mb-2">
+            Mutual Fund distribution services are offered through AMFI-registered Mutual Fund Distributor, Novelty Capital with AMFI
+            Registration No: ARN - 322456 (Date of initial Registration - 13/FEB/2025 & Current validity of ARN - till 12/FEB/2028).
+          </p>
+          <p className="font-medium mb-2">*Mutual fund investments are subject to market risks, read all scheme related documents carefully*</p>
+          <p className="mb-2">Terms and conditions of the website are applicable. Privacy policy of the website is applicable.</p>
+          <p>No employee, partner, affiliate of Novelty Capital accepts any funds pertaining to investments into their personal accounts.</p>
+        </div>
+        
         <div className="pt-8 border-t border-border text-sm text-foreground/60 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {currentYear} Novelty Capital. All rights reserved.</p>
           <div className="flex items-center gap-4">
@@ -119,3 +132,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
