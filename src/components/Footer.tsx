@@ -58,6 +58,46 @@ const Footer = () => {
     }
   ];
 
+  // Advanced technical financial knowledge
+  const technicalFinancialKnowledge = [
+    {
+      title: "Modern Portfolio Theory",
+      content: "We apply Markowitz's Modern Portfolio Theory to construct optimally diversified portfolios that maximize expected returns for a given level of risk through efficient frontier analysis."
+    },
+    {
+      title: "Factor-Based Investing",
+      content: "Our strategies leverage the Fama-French Five-Factor Model which extends beyond market risk to include size, value, profitability, and investment patterns to generate alpha."
+    },
+    {
+      title: "Quantitative Analysis",
+      content: "We employ sophisticated statistical methods like Monte Carlo simulations with 10,000+ iterations to stress-test portfolio performance across multiple economic scenarios."
+    },
+    {
+      title: "Risk-Adjusted Performance Metrics",
+      content: "We evaluate investments using Sharpe Ratio, Sortino Ratio, and Jensen's Alpha to ensure superior risk-adjusted returns compared to respective benchmarks."
+    }
+  ];
+
+  // Advanced asset allocation strategies
+  const assetAllocationStrategies = [
+    {
+      title: "Strategic vs. Tactical Asset Allocation",
+      content: "Our dual approach combines long-term strategic allocation based on capital market assumptions with tactical adjustments to capitalize on short-term market dislocations."
+    },
+    {
+      title: "Liability-Driven Investment (LDI)",
+      content: "For clients with specific future financial obligations, we implement LDI strategies that match investment horizons with liability schedules to ensure financial security."
+    },
+    {
+      title: "Smart Beta Strategies",
+      content: "We utilize factor-tilted ETFs and funds that systematically target specific risk premia like momentum, quality, and low volatility to enhance portfolio efficiency."
+    },
+    {
+      title: "Alternative Asset Integration",
+      content: "Beyond traditional asset classes, we provide access to alternative investments including REITs, private equity, and structured products for enhanced diversification."
+    }
+  ];
+
   return (
     <footer className="bg-secondary/50 pt-20 pb-12">
       <div className="container mx-auto px-6 md:px-8">
@@ -157,6 +197,42 @@ const Footer = () => {
                 <li><span className="font-medium">Tax-Free Bonds:</span> Government-issued bonds with tax-free interest income</li>
               </ul>
             </div>
+          </div>
+        </div>
+        
+        {/* Advanced Technical Investment Knowledge Section */}
+        <div className="mb-10 bg-white p-6 rounded-xl shadow-subtle border border-primary/10">
+          <h3 className="text-lg font-medium mb-4 flex items-center">
+            <Info className="w-5 h-5 text-primary mr-2" />
+            Advanced Investment Methodology
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {technicalFinancialKnowledge.map((info, index) => (
+              <div key={index} className="p-4 bg-secondary/20 rounded-lg">
+                <h4 className="font-medium mb-2">{info.title}</h4>
+                <p className="text-sm text-foreground/80">{info.content}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {assetAllocationStrategies.map((strategy, index) => (
+              <div key={index} className="p-4 bg-secondary/20 rounded-lg">
+                <h4 className="font-medium mb-2">{strategy.title}</h4>
+                <p className="text-sm text-foreground/80">{strategy.content}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 p-4 bg-primary/10 rounded-lg">
+            <h4 className="font-medium mb-2 text-primary">Our Proprietary Risk Management Framework</h4>
+            <p className="text-sm text-foreground/80 mb-3">
+              At Novelty Capital, we employ a proprietary multi-layered risk management system:
+            </p>
+            <ul className="text-sm text-foreground/80 space-y-2">
+              <li><span className="font-medium">Value at Risk (VaR) Analysis:</span> Calculating potential losses using 95% confidence intervals across multiple time horizons</li>
+              <li><span className="font-medium">Stress Testing:</span> Simulating portfolio performance across historical market crashes (2008, 2020) and hypothetical scenarios</li>
+              <li><span className="font-medium">Correlation Decay Monitoring:</span> Tracking dynamic asset correlations to detect potential diversification breakdowns during market stress</li>
+              <li><span className="font-medium">Tail Risk Hedging:</span> Strategic options positioning to protect against extreme market downturns while preserving upside potential</li>
+            </ul>
           </div>
         </div>
         
