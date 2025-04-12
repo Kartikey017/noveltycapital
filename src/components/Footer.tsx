@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Diamond } from "lucide-react";
+import { Diamond, Info } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -35,6 +35,26 @@ const Footer = () => {
         { name: "Privacy Policy", path: "/privacy" },
         { name: "Terms of Service", path: "/terms" }
       ]
+    }
+  ];
+
+  // India-specific financial information
+  const indiaFinancialInfo = [
+    {
+      title: "Know Your Investment",
+      content: "In India, investments in equity markets are regulated by SEBI. Direct equity investments require a Demat and Trading account with a registered broker."
+    },
+    {
+      title: "Tax Implications",
+      content: "STCG (Short Term Capital Gains) on equity holdings less than 1 year are taxed at 15%, while LTCG (Long Term Capital Gains) above ₹1 lakh are taxed at 10% without indexation benefits."
+    },
+    {
+      title: "Mutual Fund Categories",
+      content: "SEBI categorizes mutual funds into Equity, Debt, Hybrid, Solution-oriented, and other schemes to standardize mutual fund offerings across the industry."
+    },
+    {
+      title: "SIP Benefits",
+      content: "In the Indian context, SIPs help mitigate the impact of market volatility through rupee cost averaging and allow investments starting from as low as ₹500 per month."
     }
   ];
 
@@ -104,6 +124,42 @@ const Footer = () => {
           ))}
         </div>
         
+        {/* India-specific financial knowledge section */}
+        <div className="mb-10 bg-white p-6 rounded-xl shadow-subtle border border-primary/10">
+          <h3 className="text-lg font-medium mb-4 flex items-center">
+            <Info className="w-5 h-5 text-primary mr-2" />
+            Indian Financial Markets Knowledge
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {indiaFinancialInfo.map((info, index) => (
+              <div key={index} className="p-4 bg-secondary/20 rounded-lg">
+                <h4 className="font-medium mb-2">{info.title}</h4>
+                <p className="text-sm text-foreground/80">{info.content}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 bg-secondary/20 rounded-lg">
+              <h4 className="font-medium mb-2">Indian Market Regulators</h4>
+              <ul className="text-sm text-foreground/80 space-y-2">
+                <li><span className="font-medium">SEBI:</span> Securities and Exchange Board of India regulates securities markets</li>
+                <li><span className="font-medium">RBI:</span> Reserve Bank of India controls monetary policy and banking regulations</li>
+                <li><span className="font-medium">IRDAI:</span> Insurance Regulatory and Development Authority regulates insurance sector</li>
+                <li><span className="font-medium">PFRDA:</span> Pension Fund Regulatory and Development Authority oversees pension funds</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg">
+              <h4 className="font-medium mb-2">Tax-Efficient Investments in India</h4>
+              <ul className="text-sm text-foreground/80 space-y-2">
+                <li><span className="font-medium">ELSS Funds:</span> Equity Linked Saving Schemes with 3-year lock-in and Sec 80C benefits</li>
+                <li><span className="font-medium">PPF:</span> Public Provident Fund offering sovereign guarantee with 15-year tenure</li>
+                <li><span className="font-medium">NPS:</span> National Pension System with additional tax benefits under Sec 80CCD(1B)</li>
+                <li><span className="font-medium">Tax-Free Bonds:</span> Government-issued bonds with tax-free interest income</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
         {/* Disclaimer section */}
         <div className="mb-8 p-4 bg-secondary/80 border border-primary/10 rounded-lg text-sm text-foreground/80">
           <p className="font-medium mb-2">Disclaimer:</p>
@@ -132,4 +188,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
